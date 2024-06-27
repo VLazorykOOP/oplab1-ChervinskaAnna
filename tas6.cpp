@@ -37,7 +37,7 @@ public:
 
 // Прототипи функцій
 double func_regr(double r, double m, double k);
-double func(double x, double y, double z) throw(ErrorRange, ErrorNoFile);
+double func(double x, double y, double z);
 double Qnk(double x, double y);
 double Qn(double x, double y, double z);
 double Qn1(double x, double y, double z);
@@ -55,9 +55,9 @@ std::unordered_map<std::string, double> textMap; // Мапа для зберіг
 std::vector<std::pair<double, double>> Udata;    // Вектор пар для зберігання даних U
 std::vector<std::pair<double, double>> Tdata;    // Вектор пар для зберігання даних T
 
-bool readDataFromFile1() throw(ErrorNoFile); // Прототип функції для зчитування даних з першого файлу
-bool readDataFromFile2() throw(ErrorNoFile); // Прототип функції для зчитування даних з другого файлу
-bool readDataFromFile3() throw(ErrorNoFile); // Прототип функції для зчитування даних з третього файлу
+bool readDataFromFile1();
+bool readDataFromFile2();
+bool readDataFromFile3();
 
 int main()
 {
@@ -116,7 +116,7 @@ double func_regr(double r, double m, double k)
 }
 
 // Функція обчислення func
-double func(double x, double y, double z) throw(ErrorRange, ErrorNoFile)
+double func(double x, double y, double z)
 {
     if (x > 10 || x < -10)
         throw ErrorRange(x);
@@ -259,7 +259,7 @@ double Ktext(double x, double y, double z, double t, const std::string &text)
 }
 
 // Функція зчитування даних з файлу dat1.dat
-bool readDataFromFile1() throw(ErrorNoFile)
+bool readDataFromFile1()
 {
     std::ifstream file("dat1.dat");
     if (!file.is_open())
@@ -277,7 +277,7 @@ bool readDataFromFile1() throw(ErrorNoFile)
 }
 
 // Функція зчитування даних з файлу dat2.dat
-bool readDataFromFile2() throw(ErrorNoFile)
+bool readDataFromFile2()
 {
     std::ifstream file("dat2.dat");
     if (!file.is_open())
@@ -295,7 +295,7 @@ bool readDataFromFile2() throw(ErrorNoFile)
 }
 
 // Функція зчитування даних з файлу dat3.dat
-bool readDataFromFile3() throw(ErrorNoFile)
+bool readDataFromFile3()
 {
     std::ifstream file("dat3.dat");
     if (!file.is_open())
